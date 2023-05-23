@@ -1,5 +1,8 @@
 const express = require('express');
 const {RtcTokenBuilder, RtcRole} = require('agora-access-token');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const PORT = 8080;
 
@@ -50,6 +53,9 @@ const generateAccessToken = (req, resp) => {
 }
 
 app.get('/access_token', nocache, generateAccessToken);
+app.get("/", (req, res)=> {
+  res.send("Working");
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
